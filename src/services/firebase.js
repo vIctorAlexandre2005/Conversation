@@ -3,12 +3,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCt8Z5Pvaem_zAMqh9lv21tHjjJ0GK__0I",
-  authDomain: "newchat-ec261.firebaseapp.com",
-  projectId: "newchat-ec261",
-  storageBucket: "newchat-ec261.appspot.com",
-  messagingSenderId: "267101995029",
-  appId: "1:267101995029:web:846d631d6a9be36fc40e1c"
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID
 };
 
 const app = firebase.initializeApp(firebaseConfig);
