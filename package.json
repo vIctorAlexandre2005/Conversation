@@ -13,7 +13,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "email-validator": "^2.0.4",
-    "firebase": "^10.10.0",
+    "firebase": "^10.11.0",
     "framer-motion": "^11.0.25",
     "next": "14.1.4",
     "phosphor-icons": "^1.4.2",
