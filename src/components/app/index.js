@@ -7,7 +7,7 @@ export function Content() {
     const [userChat, setUserChat] = useState(null)
     return (
         <Box height={"100vh"} display={"flex"}>
-            <Box flex={1} borderRight={"2px solid black"}>
+            <Box flex={1} borderRight={"1px solid #03030353"}>
             <Sidebar userChat={userChat} setUserChat={setUserChat} />
             </Box>
             <Box h={"100vh"} flex={4}>
@@ -15,7 +15,6 @@ export function Content() {
             <ChatComponent userChat={userChat} setUserChat={setUserChat} />
             </Box>
             </Box>
-            
         </Box>
     )
 }

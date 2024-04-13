@@ -28,9 +28,19 @@ export function SidebarChatItem({ id, users, user, setUserChat, active }) {
     }
 
     return (
-        <Box _hover={{ bg: '#212121' }} gap={6} display={"flex"} alignItems={"center"} onClick={handleNewChat} p={"1rem"}>
+        <Box 
+            _hover={{ bg: '#d1d1d1', transition: '0.2s' }} 
+            bg={active && '#d1d1d1'}
+            gap={6} 
+            display={"flex"} 
+            alignItems={"center"} 
+            onClick={handleNewChat}
+            p={"1rem"}
+        >
             {avatarData ? <Img src={avatarData?.photoURL} /> : ''}
-            <Text fontSize={"1.26rem"} color={"white"} fontWeight={"500"}>{userName}</Text>
+            <Text fontSize={"1.26rem"} color={"black"} fontWeight={"500"}>
+                {userName}
+            </Text>
         </Box>
     );
 }

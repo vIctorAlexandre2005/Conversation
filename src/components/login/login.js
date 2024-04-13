@@ -9,9 +9,7 @@ export function LoginComponent() {
     return (
         <>
         
-    <Button onClick={handleSignin}>
-        Login com o Google
-    </Button>    
+    <Button onClick={handleSignin}>Login com o Google</Button>    
         
         </>
     )

@@ -6,11 +6,7 @@ import { Message } from '@/components/Message';
 
 export function ChatBody({ chatId }) {
     const [messagesRes] = useCollection(
-        db
-            .collection("chats")
-            .doc(chatId)
-            .collection("messages")
-            .orderBy("timestamp", "asc")
+        db.collection("chats").doc(chatId).collection("messages").orderBy("timestamp", "asc")
     );
 
     const refBody = useRef("");
@@ -23,7 +19,7 @@ export function ChatBody({ chatId }) {
     }, [messagesRes]);
 
     return (
-        <Box ref={refBody} flex={1} bg={"#02ad41"} overflow={"auto"}>
+        <Box ref={refBody} flex={1} bg={"#e7e7e7"} overflow={"auto"}>
             {messagesRes?.docs.map((message) => (
                 <Message
                     key={message.id}

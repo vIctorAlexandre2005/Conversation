@@ -17,7 +17,7 @@ export function SidebarChat({ userChat, setUserChat }) {
     const [chatsSnapShot] = useCollection(refChat);
 
     return (
-        <Flex overflow={"auto"} gap={4} bg="#282828" h={"100%"}>
+        <Flex overflowX={"scroll"} direction={"column"} bg="#f6f6f6" h={"100%"}>
             {chatsSnapShot?.docs.map((item, index) => (
                 <Box w={"100%"} key={index}>
                     <SidebarChatItem
@@ -27,7 +27,7 @@ export function SidebarChat({ userChat, setUserChat }) {
                         setUserChat={setUserChat}
                         active={userChat?.chatId === item.id ? "limegreen" : ''}
                     />
-                    <Divider w={"100%"} border={"1px solid white"} />
+                    <Divider w={"100%"} border={"1px solid #6C63FF"} />
                 </Box>
             ))}
         </Flex>

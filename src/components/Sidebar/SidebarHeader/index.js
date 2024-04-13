@@ -1,9 +1,9 @@
 import { auth, db } from '@/services/firebase';
-import {Text, Box, Img, Button, Divider} from '@chakra-ui/react'
+import {Text, Box, Img, Button, Divider, IconButton} from '@chakra-ui/react'
 import * as EmailValidator from 'email-validator';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from 'react-firebase-hooks/firestore';
-
+import { SmallAddIcon } from '@chakra-ui/icons'
 export function SidebarHeader({ setUserChat }) {
     const [user] = useAuthState(auth);
 
@@ -31,30 +31,36 @@ export function SidebarHeader({ setUserChat }) {
 
         if (!EmailValidator.validate(emailInput)) {
             return alert("Email inválido");
-        } else if (emailInput === user.email) {
+        } else if (emailInput === user?.email) {
             return alert("Insira um email diferente do seu");
         } else if (chatExists(emailInput)) {
             return alert("Chat já existe");
         }
 
         db.collection("chats").add({
-            users: [user.email, emailInput],
+            users: [user?.email, emailInput],
         });
     };
     return (
         <>
-        <Box p={"1rem"} justifyContent={"space-between"} display={"flex"} bg={"#282828"} width={"100%"}>
-            <Img onClick={() => [auth.signOut(), setUserChat(null)]} src={user?.photoURL} h={35} w={35} borderRadius={"50%"} />
+        <Box p={"1rem"} justifyContent={"space-between"} display={"flex"} bg={"#e7e7e7"} width={"100%"}>
+            <Img 
+                onClick={() => [auth.signOut(), setUserChat(null)]} 
+                src={user?.photoURL} 
+                h={35} 
+                w={35} 
+                borderRadius={"50%"}
+            />
 
             <Box>
-                <Button onClick={handleCreateChat} bg={"limegreen"} fontWeight={"500"} fontSize={"1.2rem"}>
-                    Add
-                </Button>
+                <IconButton as={"button"} icon={<SmallAddIcon color={"white"} />} 
+                onClick={handleCreateChat} bg={"#6C63FF"} 
+                _hover={{ bg: '#5036f5' }} fontWeight={"500"} fontSize={"1.2rem"} />
             </Box>
             
         </Box>
         
-        <Divider width={"100%"} border={"1px solid black"} />
+        <Divider width={"100%"} border={"1px solid #6C63FF"} />
         </>
     )
 }
