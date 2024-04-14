@@ -1,12 +1,28 @@
 import { Content } from "@/components/app";
+import { MobileContent } from "@/components/app/mobileIndex";
 import { LoginComponent } from "@/components/login/login";
 import { auth, db } from "@/services/firebase";
-import { useEffect } from "react";
+import { Box } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Home() {
 
   const [user, loading] = useAuthState(auth);
+  const [isMobile, setIsMobile] = useState(false);
+
+    const checkIsMobile = () => {
+        setIsMobile(window.innerWidth < 1024);
+    };
+
+    useEffect(() => {
+        checkIsMobile();
+        window.addEventListener('resize', checkIsMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkIsMobile);
+        };
+    }, []);
 
   useEffect(() => {
     if(user) {
@@ -14,6 +30,7 @@ export default function Home() {
         email: user?.email,
         photoUrl: user?.photoURL,
       });
+      
     }
   }, [user]);
   return (
@@ -21,7 +38,15 @@ export default function Home() {
    {!user ? (
     <LoginComponent />
   ) : (
-    <Content />
+    <>
+    {isMobile ? (
+      <Box w={"100%"}>
+        <MobileContent />
+      </Box>
+    ) : (
+      <Content />
+    )}
+    </>
   )}
    </>
   )
