@@ -6,6 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { MobileChat } from "./chatModalMobile";
 import { ModalBodyMobile } from "./modalbody";
+import * as EmailValidator from 'email-validator';
+
 
 export function ModalIndex({ isOpen, setIsOpen,userChat, setUserChat }) {
     const [user] = useAuthState(auth);
