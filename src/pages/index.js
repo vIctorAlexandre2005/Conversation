@@ -35,9 +35,9 @@ export default function Home() {
   }, [user]);
 
   const [installPrompt, setInstallPrompt] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(true);
   function onClose() {
-    setIsOpen(false);
+    setIsOpenModal(false);
   }
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function Home() {
   return (
    <>
    {installPrompt ? (
-          <Modal isCentered isOpen={isOpen} onClose={onClose}>
+          <Modal isCentered isOpen={isOpenModal} onClose={onClose}>
             <ModalOverlay
               onClick={onClose}
               width={"100%"}
@@ -127,10 +127,10 @@ export default function Home() {
     <>
     {isMobile ? (
       <Box w={"100%"}>
-        <MobileContent />
+        <MobileContent isOpen={isOpenModal} onClose={onClose} handleInstall={handleInstall} installPrompt={installPrompt} />
       </Box>
     ) : (
-      <Content />
+      <Content isOpen={isOpenModal} onClose={onClose} handleInstall={handleInstall} installPrompt={installPrompt} />
     )}
     </>
   )}
