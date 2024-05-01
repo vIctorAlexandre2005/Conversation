@@ -1,12 +1,10 @@
-![Logo do projeto](https://cdn.dribbble.com/userupload/3875671/file/original-e7509c33cfcda0d2f3a6f6892f7b85fb.png?resize=400x0)
 
-# PokeDex
+# Chat
 
-Uma PokeDex na palma da sua mão para consultar diversos tipos diferentes de pokémons
+Conecte-se com quem você quiser!
 ## 🔥 Introdução
 
-Neste app,o usuário tem acesso a uma vasta consulta de diversos pokémons, atributos e habilidades.
-
+Neste app,o usuário tem a liberdade para iniciar uma conversa com quem ele quiser adicionando o email da pessoa.
 ### ⚙️ Pré-requisitos
 
 
@@ -20,20 +18,22 @@ Etapas para instalar:
 
 - cd (projeto)
 - yarn install ou npm install
-- No seu console,usar o comando: npx expo start
+- Pegar as chaves/id`s do seu projeto criado do firebase
+- E usar.
 
 
 ## 📦 Tecnologias usadas:
 
 Coloque aqui as ferramentas que você usou para criar seu projeto, exemplo:
-
-* ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-* ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-* https://github.com/Ileriayo/markdown-badges
+NextJS
+Chakra UI
+Firebase Hooks
+Email Validator
+Git
 
 ## 👷 Autores
 
-* *Altencir Junior* - Desenvolvedor Mobile React Native - (https://github.com/altencirsilvajr)
+* *Victor Alexandre* - Desenvolvedor Front-end - (https://github.com/vIctorAlexandre2005)
 
 ## 📄 Licença
 
@@ -42,5 +42,5 @@ Coloque aqui as ferramentas que você usou para criar seu projeto, exemplo:
 ## 💡 Expressões de gratidão
 
 * Um agradecimento publicamente.
-* Para suporte, mande um email para altencirsilvajr@gmail.com.
-* Link para o meu linkedin [Meu linkedin] (https://www.linkedin.com/in/altencir-junior-60410b1a7/)https://www.linkedin.com/in/altencir-junior-60410b1a7/)
+* Para suporte, mande um email para victoralexandredasilvamarins@gmail.com.
+* Link para o meu linkedin [Meu linkedin] ([vIctorAlexandre2005](https://www.linkedin.com/in/victoralexandredasilvamarins/))
