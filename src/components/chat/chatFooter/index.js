@@ -1,7 +1,7 @@
 import { Button, Box, Text, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Icon, IconButton, Img} from '@chakra-ui/react';
 import { auth, db } from '@/services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import firebase from "firebase/compat/app";
 import * as ReactIcons from 'react-icons'
 
@@ -10,7 +10,7 @@ export function ChatFooter({ chatId }) {
     const [message, setMessage] = useState("");
 
     const handleSendMessage = (e) => {
-        e.preventDefault();
+        e?.preventDefault();
     
         // Verifica se a mensagem está vazia
         if (message.trim() === "") {
@@ -27,6 +27,19 @@ export function ChatFooter({ chatId }) {
         setMessage("");
     };
     
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+          if (event?.key === 'Enter') {
+            handleSendMessage();
+          };
+        };
+    
+        document.addEventListener('keydown', handleKeyPress);
+    
+        return () => {
+          document.removeEventListener('keydown', handleKeyPress);
+        };
+      }, []);
 
     return (
         <Box
