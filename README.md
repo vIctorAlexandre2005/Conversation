@@ -23,13 +23,10 @@ Etapas para instalar:
 
 
 ## 📦 Tecnologias usadas:
-
-Coloque aqui as ferramentas que você usou para criar seu projeto, exemplo:
-NextJS
-Chakra UI
-Firebase Hooks
-Email Validator
-Git
+NextJS <br/>
+Chakra UI <br/>
+Firebase<br/>
+Git <br/>
 
 ## 👷 Autores
 
