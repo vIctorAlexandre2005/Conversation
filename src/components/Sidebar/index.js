@@ -1,11 +1,13 @@
-import {Flex} from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { SidebarHeader } from './SidebarHeader'
 import { SidebarChat } from './SidebarList';
 
 export function Sidebar({ userChat, setUserChat }) {
     return (
-        <Flex height={"100%"} bg={"#f6f6f6"} direction={"column"}>
-            <SidebarHeader setUserChat={setUserChat} />
+        <Flex borderRadius={"8px"} height={"100%"} bg={"black.800"} direction={"column"}>
+            <Box mb={"2rem"} p={"1rem"}>
+                <SidebarHeader setUserChat={setUserChat} />
+            </Box>
             <SidebarChat setUserChat={setUserChat} userChat={userChat} />
         </Flex>
     )

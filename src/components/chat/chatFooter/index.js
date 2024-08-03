@@ -1,4 +1,4 @@
-import { Button, Box, Text, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Icon, IconButton, Img} from '@chakra-ui/react';
+import { Button, Box, Text, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Icon, IconButton, Img, Divider} from '@chakra-ui/react';
 import { auth, db } from '@/services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useEffect, useState } from 'react';
@@ -45,24 +45,27 @@ export function ChatFooter({ chatId }) {
         <Box
             w={"100%"}
             bottom={0}
-            p={"0.5rem"}
             display={"flex"}
-            bg={"#fff"}
+            flexDir={"column"}
         >
+            <Divider color={"black.800"} w={"100%"} border={"1px solid"} mb={"1rem"} />
             <FormControl gap={12} display={"flex"} onSubmit={handleSendMessage}>
                 <Input 
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
-                    placeholder='Mensagem' 
-                    color={"black"}
-                    _focus={{ border: '1px solid #452ad8' }}
-                    bg={"white"}
+                    placeholder='Mensagem'
+                    border={"none"} 
+                    _placeholder={{ color: "black.500" }}
+                    focusBorderColor='none'
+                    color={"white"}
+                    p={"1.5rem"}
+                    bg={"black.700"}
                 />
                 <Button 
-                    bg={"#452ad8"} 
+                    bg={"bunker.400"} 
                     p={"1rem"} 
                     type='button' 
-                    _hover={{ bg: '#5941d2' }} 
+                    _hover={{ bg: 'bunker.500' }} 
                     color={"white"} 
                     onClick={handleSendMessage}
                 >

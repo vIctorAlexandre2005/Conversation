@@ -1,5 +1,5 @@
 import { db } from "@/services/firebase";
-import { Box, Divider, Img, Text } from "@chakra-ui/react";
+import { Avatar, Box, Divider, Img, Text } from "@chakra-ui/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 const getUser = (users, userLogged) => {
@@ -29,19 +29,17 @@ export function ModalContacts({ id, users, user, setUserChat }) {
 
     return (
         <Box
-            _hover={{ bg: '#d1d1d1', transition: '0.2s' }}
-            gap={0}
+            _hover={{ bg: 'bunker.500', transition: '0.2s' }}
+            gap={2}
             display={"flex"}
             onClick={handleNewChat}
-            flexDirection={"column"}
-            mb={"1rem"}
-            p={"0.5rem"}
+            alignItems={"center"}
+            p={"1rem"}
         >
-            {avatarData ? <Img src={avatarData?.photoURL} /> : ''}
-            <Text fontSize={"1.26rem"} color={"black"} fontWeight={"500"} textAlign={"left"}>
+            {avatarData ? <Img src={avatarData?.photoUrl} h={"3rem"} w={"3rem"} borderRadius={"50%"} /> : <Avatar />}
+            <Text fontSize={"1.26rem"} color={"white"} fontWeight={"500"} textAlign={"left"}>
                 {userName}
             </Text>
-            <Divider w={"100%"} border={"1px solid #6C63FF"} />
         </Box>
     )
 }

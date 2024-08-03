@@ -4,7 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { ModalContacts } from "./modalBodyContacts";
 import { useEffect, useState } from "react";
-import { MoonLoader } from "react-spinners";
+import { MoonLoader, PulseLoader } from "react-spinners";
+import { Loader } from "../Loader";
 
 export function ModalBodyMobile({ userChat, setUserChat }) {
     const [user] = useAuthState(auth);
@@ -18,29 +19,29 @@ export function ModalBodyMobile({ userChat, setUserChat }) {
 
     const [chatsSnapShot] = useCollection(refChat);
     useEffect(() => {
-        if(chatsSnapShot) {
+        if (chatsSnapShot) {
             setLoading(false);
         }
     }, [chatsSnapShot])
-    
+
     return (
-        <Flex overflow={"auto"} direction={"column"} w={"100%"} h={"100%"}>
+        <Flex overflow={"auto"} overflowX={"hidden"} direction={"column"} w={"100%"} h={"100%"}>
             {loading ? (
-                <MoonLoader size={40} color="purple" />
+                <Loader />
             ) : (
                 <>
-                {chatsSnapShot?.docs.map((item, index) => (
-                <Box w={"100%"} key={index}>
-                    <ModalContacts
-                    id={item.id}
-                    users={item.data().users}
-                    user={user}
-                    setUserChat={setUserChat}
-                    active={userChat?.chatId === item.id ? "limegreen" : ''}
-                />
-                    
-                </Box>
-            ))}
+                    {chatsSnapShot?.docs.map((item, index) => (
+                        <Box w={"100%"} key={index}>
+                            <Divider w={"100%"} border={"1px solid"} color={"bunker.500"} />
+                            <ModalContacts
+                                id={item.id}
+                                users={item.data().users}
+                                user={user}
+                                setUserChat={setUserChat}
+                                active={userChat?.chatId === item.id ? "limegreen" : ''}
+                            />
+                        </Box>
+                    ))}
                 </>
             )}
         </Flex>

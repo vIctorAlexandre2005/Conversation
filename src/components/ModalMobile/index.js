@@ -1,15 +1,16 @@
 import { auth, db } from "@/services/firebase";
 import { SmallAddIcon } from "@chakra-ui/icons";
-import { Box, Divider, IconButton, Img, Modal, ModalBody, ModalContent, ModalHeader, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, IconButton, Img, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { MobileChat } from "./chatModalMobile";
 import { ModalBodyMobile } from "./modalbody";
 import * as EmailValidator from 'email-validator';
+import { IoPersonAddSharp } from "react-icons/io5";
+import { ButtonAddContact } from "./ButtonAddContact";
 
-
-export function ModalIndex({ isOpen, setIsOpen,userChat, setUserChat }) {
+export function ModalIndex({ isOpen, setIsOpen, userChat, setUserChat }) {
     const [user] = useAuthState(auth);
 
     const getChatRef = () => {
@@ -47,36 +48,38 @@ export function ModalIndex({ isOpen, setIsOpen,userChat, setUserChat }) {
         });
     };
     return (
-        <Modal size={"full"} isOpen={isOpen} isCentered>
-                <ModalContent w={"100%"} height={"100vh"} bg={"white"}>
-                    <ModalHeader w={"100%"}>
-                        <Text fontWeight={"600"} color={"black"} fontSize={"1.26rem"}>Chat App</Text>
-
-                        <Box p={"1rem"} justifyContent={"space-between"} display={"flex"}>
+        <Modal size={"full"} isOpen={isOpen}>
+            <ModalContent overflowX={"hidden"} w={"100%"} bg={"black.950"}>
+                <ModalHeader mb={"2rem"} w={"100%"}>
+                    <Box justifyContent={"space-between"} display={"flex"}>
+                        <Flex align={"center"} gap={2}>
                             <Img
                                 onClick={() => [auth.signOut(), setUserChat(null)]}
                                 src={user?.photoURL}
-                                h={35}
-                                w={35}
+                                h={50}
+                                w={50}
                                 borderRadius={"50%"}
                             />
+                            <Text color={"white"}>{user?.displayName}</Text>
+                        </Flex>
 
-                            <Box>
-                                <IconButton as={"button"} icon={<SmallAddIcon color={"white"} />}
-                                    onClick={handleCreateChat} bg={"#6C63FF"}
-                                    _hover={{ bg: '#5036f5' }} fontWeight={"500"} fontSize={"1.2rem"} />
-                            </Box>
-                        </Box>
-                    </ModalHeader>
-                    <Divider w={"100%"} border={"2px solid #452ad8"} />
+                    </Box>
+                </ModalHeader>
 
-                    <ModalBody w={"100%"} bg={"white"} flexDir={"column"} display={"flex"}>
-                      <ModalBodyMobile
-                      userChat={userChat}
-                      setUserChat={setUserChat}
-                      />
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+                <ModalBody w={"100%"} p={0} flexDir={"column"} display={"flex"}>
+                    <ModalBodyMobile
+                        userChat={userChat}
+                        setUserChat={setUserChat}
+                    />
+                </ModalBody>
+                <ModalFooter>
+                <Box bottom={"50px"} left={0} display={"flex"}>
+                    <IconButton p={"1.5rem"} borderRadius={"50%"} as={"button"} icon={<IoPersonAddSharp size={32} color={"white"} />}
+                        onClick={handleCreateChat} bg={"bunker.500"}
+                        _hover={{ bg: 'bunker.600' }} fontWeight={"500"} fontSize={"1.2rem"} />
+                </Box>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     )
 }

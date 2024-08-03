@@ -20,7 +20,7 @@ export function ChatBody({ chatId }) {
     }, [messagesRes]);
 
     return (
-        <Box ref={refBody} flex={1} bg={"#e7e7e7"} overflow={"auto"}>
+        <Box ref={refBody} flex={1} overflow={"auto"}>
 
             {messagesRes?.docs.map((message) => (
                 <Message
