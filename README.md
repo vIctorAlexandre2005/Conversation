@@ -4,7 +4,8 @@
 Conecte-se com quem você quiser!
 ## 🔥 Introdução
 
-Neste app,o usuário tem a liberdade para iniciar uma conversa com quem ele quiser adicionando o email da pessoa.
+Neste app,o usuário tem a liberdade para iniciar uma conversa com quem ele quiser adicionando o email da pessoa. <br />
+Se quiser falar comigo por esse app, é só clicar no ícone de adicionar usuário e digitar o meu email: victoralexandredasilvamarins@gmail.com
 ### ⚙️ Pré-requisitos
 
 
