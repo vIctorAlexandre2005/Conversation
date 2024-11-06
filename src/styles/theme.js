@@ -4,5 +4,5 @@ import { breakpoints } from "./breakpoints";
 
 export const theme = extendTheme({
   colors,
-  breakpoints
+  breakpoints,
 });

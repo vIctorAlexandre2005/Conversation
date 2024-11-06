@@ -5,13 +5,22 @@ import { LoginComponent } from "@/components/login/login";
 import { auth, db } from "@/services/firebase";
 import { ModalInstallPwa } from "@/utils/Modals/pwa";
 import { usePWA } from "@/utils/functions/usePWA";
-import { Box, Button, Flex, Modal, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Modal,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { PulseLoader } from "react-spinners";
 
 export default function Home() {
-
   const [user, loading] = useAuthState(auth);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -21,10 +30,10 @@ export default function Home() {
 
   useEffect(() => {
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
+    window.addEventListener("resize", checkIsMobile);
 
     return () => {
-      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener("resize", checkIsMobile);
     };
   }, []);
 
@@ -40,7 +49,7 @@ export default function Home() {
   const [isOpenModal, setIsOpenModal] = useState(true);
   function onClose() {
     setIsOpenModal(false);
-  };
+  }
 
   const installPrompt = usePWA();
 
@@ -48,28 +57,26 @@ export default function Home() {
     if (installPrompt) {
       installPrompt.prompt();
       installPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the A2HS prompt");
         } else {
-          console.log('User dismissed the A2HS prompt');
+          console.log("User dismissed the A2HS prompt");
         }
       });
-    };
-  };
+    }
+  }
 
   if (loading) {
-    return (
-      <Loader />
-    );
-  };
+    return <Loader />;
+  }
 
   return (
     <>
       {installPrompt && (
-        <ModalInstallPwa 
-          isOpenModal={isOpenModal} 
-          onClose={onClose} 
-          handleInstall={handleInstall} 
+        <ModalInstallPwa
+          isOpenModal={isOpenModal}
+          onClose={onClose}
+          handleInstall={handleInstall}
         />
       )}
       {!user ? (
@@ -96,5 +103,5 @@ export default function Home() {
         </>
       )}
     </>
-  )
+  );
 }
