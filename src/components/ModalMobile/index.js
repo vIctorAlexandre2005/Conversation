@@ -2,6 +2,7 @@ import { auth, db } from "@/services/firebase";
 import { SmallAddIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
   Divider,
   Flex,
   IconButton,
@@ -83,18 +84,17 @@ export function ModalIndex({ isOpen, setIsOpen, userChat, setUserChat }) {
           <ModalBodyMobile userChat={userChat} setUserChat={setUserChat} />
         </ModalBody>
         <ModalFooter>
-          <Box bottom={"50px"} left={0} display={"flex"}>
-            <IconButton
+          <Box /* bottom={"50px"} */ left={0}>
+            <Button
               p={"1.5rem"}
-              borderRadius={"50%"}
-              as={"button"}
-              icon={<IoPersonAddSharp size={32} color={"white"} />}
+              borderRadius={"20px"}
               onClick={handleCreateChat}
               bg={"bunker.500"}
               _hover={{ bg: "bunker.600" }}
               fontWeight={"500"}
-              fontSize={"1.2rem"}
-            />
+            >
+              <IoPersonAddSharp size={32} color={"white"} />
+            </Button>
           </Box>
         </ModalFooter>
       </ModalContent>

@@ -7,15 +7,27 @@ import {
   Divider,
   IconButton,
   Flex,
+  useDisclosure,
 } from "@chakra-ui/react";
 import * as EmailValidator from "email-validator";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { SmallAddIcon } from "@chakra-ui/icons";
 import { IoPersonAddSharp } from "react-icons/io5";
+import { ModalInputEmail } from "./modal";
+import { useState } from "react";
 
 export function SidebarHeader({ setUserChat }) {
   const [user] = useAuthState(auth);
+  const [emailInput, setEmailInput] = useState("");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  function handleChangeEmail(e) {
+    setEmailInput(e.target?.value);
+  }
+
+  
 
   const getChatRef = () => {
     if (user && user.email) {
@@ -38,20 +50,25 @@ export function SidebarHeader({ setUserChat }) {
   };
 
   function handleCreateChat() {
-    const emailInput = prompt("Escreva o email desejado");
     if (!emailInput) return;
 
     if (!EmailValidator.validate(emailInput)) {
       return alert("Email inválido");
-    } else if (emailInput === user?.email) {
+    }  
+    
+    if (emailInput === user?.email) {
       return alert("Insira um email diferente do seu");
-    } else if (chatExists(emailInput)) {
+    } 
+    
+    if (chatExists(emailInput)) {
       return alert("Chat já existe");
     }
 
     db.collection("chats").add({
       users: [user?.email, emailInput],
     });
+
+    onClose();
   }
   return (
     <>
@@ -79,7 +96,7 @@ export function SidebarHeader({ setUserChat }) {
             p={"1rem"}
             as={"button"}
             icon={<IoPersonAddSharp size={24} color="white" />}
-            onClick={handleCreateChat}
+            onClick={onOpen}
             bg={"bunker.600"}
             _hover={{ bg: "bunker.700" }}
             fontWeight={"500"}
@@ -87,6 +104,16 @@ export function SidebarHeader({ setUserChat }) {
           />
         </Box>
       </Box>
+
+      {isOpen && (
+        <ModalInputEmail 
+          isOpen={isOpen} 
+          onClose={onClose} 
+          handleCreateChat={handleCreateChat} 
+          emailInput={emailInput} 
+          handleChangeEmail={handleChangeEmail}
+        />
+      )}
     </>
   );
 }

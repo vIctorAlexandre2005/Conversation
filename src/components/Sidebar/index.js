@@ -5,7 +5,6 @@ import { SidebarChat } from "./SidebarList";
 export function Sidebar({ userChat, setUserChat }) {
   return (
     <Flex
-      borderRadius={"8px"}
       height={"100%"}
       bg={"black.800"}
       direction={"column"}

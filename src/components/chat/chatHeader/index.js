@@ -9,6 +9,7 @@ export function ChatHeader({
   photoURL,
   name,
 }) {
+
   return (
     <>
       <Box

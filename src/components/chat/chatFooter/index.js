@@ -26,7 +26,7 @@ export function ChatFooter({ chatId }) {
     e?.preventDefault();
 
     // Verifica se a mensagem está vazia
-    if (message.trim() === "") {
+    if (message === "") {
       return; // Retorna sem fazer nada se a mensagem estiver vazia
     }
 
@@ -42,7 +42,7 @@ export function ChatFooter({ chatId }) {
 
   useEffect(() => {
     const handleKeyPress = (event) => {
-      if (event?.key === "Enter") {
+      if (event?.key === "Esc") {
         handleSendMessage();
       }
     };
@@ -69,16 +69,18 @@ export function ChatFooter({ chatId }) {
           placeholder="Mensagem"
           border={"none"}
           _placeholder={{ color: "black.500" }}
-          focusBorderColor="none"
+          focusBorderColor="bunker.600"
+          _focus={{ border: "2px solid bunker.600" }}
+          outline={"none"}
           color={"white"}
           p={"1.5rem"}
-          bg={"black.700"}
+          bg={"black.800"}
         />
         <Button
-          bg={"bunker.400"}
+          bg={"bunker.500"}
           p={"1rem"}
           type="button"
-          _hover={{ bg: "bunker.500" }}
+          _hover={{ bg: "bunker.400" }}
           color={"white"}
           onClick={handleSendMessage}
         >

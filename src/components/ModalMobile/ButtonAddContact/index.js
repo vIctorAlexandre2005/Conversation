@@ -11,6 +11,7 @@ export function ButtonAddContact() {
         bg: "bunker.700",
       }}
       color={"bunker.50"}
+      borderRadius={"none"}
     >
       Adicionar contato
     </Button>

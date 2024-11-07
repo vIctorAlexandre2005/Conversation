@@ -11,7 +11,7 @@ export function ChatComponent({ userChat, setUserChat }) {
 
   return (
     <Flex h={"100%"} p={"2rem"} direction={"column"} w={"100%"}>
-      <ChatHeader photoURL={userChat?.photoUrl} name={userChat?.name} />
+      <ChatHeader photoURL={userChat?.photoURL} name={userChat?.name} />
       <ChatBody chatId={userChat?.chatId} />
       <ChatFooter chatId={userChat?.chatId} />
     </Flex>

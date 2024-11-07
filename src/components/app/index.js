@@ -25,7 +25,7 @@ export function Content({
   return (
     <>
       <Flex bg={"black.950"} height={"100%"} w={"100%"}>
-        <Box flex={{ tablet: 2, tabletLandscape: 1 }} p={"2rem"}>
+        <Box flex={{ tablet: 2, tabletLandscape: 1 }}>
           <Sidebar userChat={userChat} setUserChat={setUserChat} />
         </Box>
 
